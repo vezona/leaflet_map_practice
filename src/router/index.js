@@ -10,12 +10,22 @@ const routes = [
     {
         path: '/mapbox',
         name: 'mapbox',
-        component: () => import('../views/Mapbox.vue')
+        component: () => import('../views/1_Mapbox.vue')
+    },
+    {
+        path: '/event',
+        name: 'event',
+        component: () => import('../views/2_event.vue')
+    },
+    {
+        path: '/locate',
+        name: 'locate',
+        component: () => import('../views/3_Locate.vue')
     },
     {
         path: '/markers',
         name: 'markers',
-        component: () => import('../views/Markers.vue')
+        component: () => import('../views/3_Markers.vue')
     },
 ]
 

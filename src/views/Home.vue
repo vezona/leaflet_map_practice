@@ -2,6 +2,8 @@
 <template>
   <div class="wrapper">
     <router-link to="mapbox">mapbox</router-link>
+    <router-link to="event">event、original event</router-link>
+    <router-link to="locate">locate Methods and associate event</router-link>
     <router-link to="markers">markers</router-link>
   </div>
 </template>
@@ -10,15 +12,15 @@
 
 </script>
 <style lang="scss" scoped>
-.wrapper{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+// .wrapper{
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+// }
 a {
   margin:10px;
   padding:10px;
-  width: 100px;
+  width: fit-content;
   background-color: rgba(40,78,78);
   color: white;
   text-decoration: none;
