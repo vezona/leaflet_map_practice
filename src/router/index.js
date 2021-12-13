@@ -23,10 +23,25 @@ const routes = [
         component: () => import('../views/3_Locate.vue')
     },
     {
-        path: '/markers',
-        name: 'markers',
-        component: () => import('../views/3_Markers.vue')
+        path: '/zoom',
+        name: 'zoom',
+        component: () => import('../views/4_Zoom.vue')
     },
+    {
+        path: '/popups',
+        name: 'popups',
+        component: () => import('../views/5_Popups.vue')
+    },
+    {
+        path: '/controls',
+        name: 'controls',
+        component: () => import('../views/6_Controls.vue')
+    },
+    // {
+    //     path: '/markers',
+    //     name: 'markers',
+    //     component: () => import('../views/3_Markers.vue')
+    // },
 ]
 
 const router = createRouter({

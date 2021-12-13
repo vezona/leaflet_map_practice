@@ -9,9 +9,5 @@
 <script setup>
 </script>
 
-<style lang="scss" scoped>
-#app{
-  padding-top:10px
-}
-</style>
+<style lang="scss" src="./assets/scss/common.scss"> </style>
 
