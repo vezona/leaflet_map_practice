@@ -37,6 +37,11 @@ const routes = [
         name: 'controls',
         component: () => import('../views/6_Controls.vue')
     },
+    {
+        path: '/rasterLayers',
+        name: 'rasterLayers',
+        component: () => import('../views/7_RasterLayers.vue')
+    },
     // {
     //     path: '/markers',
     //     name: 'markers',

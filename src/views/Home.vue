@@ -5,8 +5,9 @@
     <router-link to="event">event、original event</router-link>
     <router-link to="locate">locate Methods and associate event</router-link>
     <router-link to="zoom">zoom</router-link>
-     <router-link to="popups">popups</router-link>
-     <router-link to="controls">controls</router-link>
+    <router-link to="popups">popups</router-link>
+    <router-link to="controls">controls</router-link>
+    <router-link to="rasterLayers">Raster Layers</router-link>
     <!-- <router-link to="markers">markers</router-link> -->
   </div>
 </template>
@@ -23,6 +24,7 @@
 //   align-items: center;
 // }
 a {
+  display:inline-block;
   margin:10px;
   padding:10px;
   width: fit-content;

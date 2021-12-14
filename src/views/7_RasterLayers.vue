@@ -2,20 +2,24 @@
   <div class="wrap">
     <div id="map"></div>
     <div class="info">
+      <h4>image opacity: <span>{{opacityLevel}}</span></h4>
+      <input type="range" min="0" max="1" step="0.1" v-model="opacityLevel">
     </div>
   </div>
 </template>
 
 <script>
 import '../assets/scss/_reset.scss'
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import logoImg from '../assets/logo.png'
 
 export default {
   setup() {
     // 地圖
-    let map, lyrOSM;
+    let map, lyrOSM, lyrImage;
+    const opacityLevel = ref(1)
 
     const mapInit = () => {
       const center = [25.0263064, 121.5262934];
@@ -26,37 +30,26 @@ export default {
 
       map.addLayer(lyrOSM);
 
-      // 手動加上 Zoom control
-      const ctlZoom = L.control.zoom({
-        zoomInText: '放大', 
-        zoomOutText: '縮小',
-        position: 'topright'
+      // 加上image over
+      lyrImage = L.imageOverlay( logoImg, 
+      [[25.253273842692565, 121.04736328125001], [24.645290695239503, 122.00181549789865]],
+      {opacity:1}).addTo(map)
+
+      // 使用 slide 去控制opacity
+      watch(opacityLevel, (e)=>{
+          lyrImage.setOpacity(e)
       })
-      ctlZoom.addTo(map);
-
-      // 手動加上 Attrubution
-      const ctlAttribution = L.control.attribution({position:'bottomleft'})
-      ctlAttribution.addTo(map)
-      // addAttribution 設定文字
-      ctlAttribution.addAttribution('OSM')
-      ctlAttribution.addAttribution('&copy; <a href="www.google.com">Go to google</a>')
-
-      // 加上 Scale bar
-      const ctlScale = L.control.scale({
-        position: 'bottomright',
-        metric:false, 
-        maxWidth:200
-      }).addTo(map)
 
       // 加上 layer control
       const objBasemaps = {
         "Open Stree Map": lyrOSM
       }
-      
-      const ObjOverlayers = {};
+      // 加上image overlay
+      const ObjOverlayers = {
+        "vuelogo Image": lyrImage
+      };
 
       const ctlLayer = L.control.layers(objBasemaps, ObjOverlayers).addTo(map)
-
 
     }
 
@@ -67,6 +60,7 @@ export default {
     })
 
     return {
+      opacityLevel
     }
   }
 }
