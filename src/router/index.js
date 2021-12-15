@@ -42,11 +42,21 @@ const routes = [
         name: 'rasterLayers',
         component: () => import('../views/7_RasterLayers.vue')
     },
-    // {
-    //     path: '/markers',
-    //     name: 'markers',
-    //     component: () => import('../views/3_Markers.vue')
-    // },
+    {
+        path: '/vectorLayers',
+        name: 'vectorLayers',
+        component: () => import('../views/8_VectorLayers.vue')
+    },
+    {
+        path: '/layerGroups',
+        name: 'layerGroups',
+        component: () => import('../views/9.Layer_groups.vue')
+    },
+    {
+        path: '/draw',
+        name: 'draw',
+        component: () => import('../views/10.Draw.vue')
+    },
 ]
 
 const router = createRouter({

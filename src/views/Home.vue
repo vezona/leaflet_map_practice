@@ -8,7 +8,9 @@
     <router-link to="popups">popups</router-link>
     <router-link to="controls">controls</router-link>
     <router-link to="rasterLayers">Raster Layers</router-link>
-    <!-- <router-link to="markers">markers</router-link> -->
+    <router-link to="vectorLayers">Vector Layers</router-link>
+    <router-link to="layerGroups">layer groups</router-link>
+    <router-link to="draw">plugin draw</router-link>
   </div>
 </template>
 
