@@ -8,9 +8,12 @@
     <router-link to="popups">popups</router-link>
     <router-link to="controls">controls</router-link>
     <router-link to="rasterLayers">Raster Layers</router-link>
-    <router-link to="vectorLayers">Vector Layers</router-link>
-    <router-link to="layerGroups">layer groups</router-link>
-    <router-link to="draw">plugin draw</router-link>
+    <router-link to="marker">marker</router-link>
+    <router-link to="polyline">polyline</router-link>
+    <router-link to="polygone">polygone</router-link>
+    <router-link to="rect_circle">rectangle and circle</router-link>
+    <router-link to="grouplayer">group layer</router-link>
+    <router-link to="leaflet_draw">plugin draw</router-link>
   </div>
 </template>
 

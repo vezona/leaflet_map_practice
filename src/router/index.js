@@ -43,19 +43,34 @@ const routes = [
         component: () => import('../views/7_RasterLayers.vue')
     },
     {
-        path: '/vectorLayers',
-        name: 'vectorLayers',
-        component: () => import('../views/8_VectorLayers.vue')
+        path: '/marker',
+        name: 'marker',
+        component: () => import('../views/8_marker.vue')
     },
     {
-        path: '/layerGroups',
-        name: 'layerGroups',
-        component: () => import('../views/9.Layer_groups.vue')
+        path: '/polyline',
+        name: 'polyline',
+        component: () => import('../views/9_Polyline.vue')
     },
     {
-        path: '/draw',
-        name: 'draw',
-        component: () => import('../views/10.Draw.vue')
+        path: '/polygone',
+        name: 'polygone',
+        component: () => import('../views/10_Polygon.vue')
+    },
+    {
+        path: '/rect_circle',
+        name: 'rect_circle',
+        component: () => import('../views/11_Rectangle&Circle.vue')
+    },
+    {
+        path: '/grouplayer',
+        name: 'grouplayer',
+        component: () => import('../views/12_GroupLayer.vue')
+    },
+    {
+        path: '/leaflet_draw',
+        name: 'leaflet_draw',
+        component: () => import('../views/13_Plugin_Draw.vue')
     },
 ]
 
