@@ -14,6 +14,8 @@
     <router-link to="rect_circle">rectangle and circle</router-link>
     <router-link to="grouplayer">group layer</router-link>
     <router-link to="leaflet_draw">plugin draw</router-link>
+    <router-link to="geojson">geojson</router-link>
+    <router-link to="finalResult">upload edit download</router-link>
   </div>
 </template>
 

@@ -72,6 +72,16 @@ const routes = [
         name: 'leaflet_draw',
         component: () => import('../views/13_Plugin_Draw.vue')
     },
+    {
+        path: '/geojson',
+        name: 'geojson',
+        component: () => import('../views/14_GeoJSON.vue')
+    },
+    
+    {
+        path: '/finalResult',
+        component: () => import('../views/upload_edit_download.vue')
+    },
 ]
 
 const router = createRouter({

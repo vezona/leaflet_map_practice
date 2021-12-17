@@ -51,7 +51,7 @@ export default {
 
       // 上面只是加上 draw control
       // 如果要建立圖型，要使用到 Event -> draw:created
-      map.on('draw:created', (e)=>{
+      map.on('draw:created', (e) => {
         console.log(e);
         // 把 eventObj 中的 layer 加上去
         // 這個 layer 包含 用draw:created 時建立的 vector layer
