@@ -77,10 +77,13 @@ const routes = [
         name: 'geojson',
         component: () => import('../views/14_GeoJSON.vue')
     },
-    
     {
-        path: '/finalResult',
+        path: '/upload_edit_download',
         component: () => import('../views/upload_edit_download.vue')
+    },
+    {
+        path: '/taiwan',
+        component: () => import('../views/Taiwan.vue')
     },
 ]
 
