@@ -6,7 +6,7 @@
 
 <script>
 import '../assets/scss/_reset.scss'
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import 'leaflet-ajax/dist/leaflet.ajax';
@@ -26,19 +26,63 @@ export default {
       map.addLayer(lyrOSM);
 
       // Taiwan
-      const taiwan = new L.geoJson.ajax('COUNTY_MOI_1090820.json')
-      taiwan.addTo(map)
+      const features = L.featureGroup();
+      const taiwan = new L.geoJson.ajax('COUNTY_MOI_1090820.json',{
+    	  middleware: function(data){ // https://github.com/calvinmetcalf/leaflet-ajax
+          	// console.log(data);
+            L.geoJson(data, {
+              onEachFeature: onEachFeature,
+              style: setStyle
+            })
+    	  }
+      })
 
 
-      // layer control 
-      const basemap = {
+      function onEachFeature(attributes, layer){
+        // 測試臺北市layer
+        if(layer.feature.properties.COUNTYNAME === '臺北市'){
+          initialLayerControl('臺北市', layer)
+        }
+
+
+        // console.log(layer)
+        layer.bindTooltip((layer) => {
+          return layer.feature.properties.COUNTYNAME
+        })
+        .addTo(features)
+
+        // hover 時改變區域顏色
+        layer.on('mouseover', () => {
+          layer.setStyle({ fillColor:'yellow', fillOpacity:0.6})
+        })
+
+        layer.on('mouseout', () => {
+          layer.setStyle({ fillColor:'none', fillOpacity:0})
+        })
+
+      }
+
+      function setStyle(geoJsonFeature){
+        return { fillOpacity: 0 }
+      }
+
+
+      // layer control
+      const initialLayerControl = (layerName, layer) => {
+        const basemap = {
           'base':lyrOSM
+        };
+
+        const overlayers = {};
+
+        overlayers[layerName] = layer
+
+        const lyrControl = L.control.layers(basemap, overlayers).addTo(map)
       }
 
-      const overlayers = {
-          '台灣地圖': taiwan
-      }
-      const lyrControl = L.control.layers(basemap, overlayers).addTo(map)
+      initialLayerControl('全部', features)
+
+
 
     }
 

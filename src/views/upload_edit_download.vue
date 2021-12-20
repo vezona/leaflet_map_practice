@@ -63,16 +63,19 @@ export default {
       reader.onload = () => {
         // console.log('讀取結束', reader.result);
         const result =  JSON.parse(reader.result)
-        L.geoJSON(result, 
+        // Create a GeoJson layer without adding it to the map
+        const layers = L.geoJSON(result, 
             { onEachFeature: onEachFeature, // onEachFeature 會遍歷每一個新建的 layer
             pointToLayer: returnMarker // 設定 point 的方法
             }) 
+        console.log('layers', layers);
       };
     }
 
     // 上傳的 geoJson 綁定上 drawnItems 圖層
+    // Take advantage of the onEachFeature callback to initialize drawnItems
     function onEachFeature (attributes, layer){
-      // console.log(layer);
+      console.log('layer', layer);
       drawnItems.addLayer(layer);
     }
 
