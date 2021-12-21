@@ -78,6 +78,11 @@ const routes = [
         component: () => import('../views/14_GeoJSON.vue')
     },
     {
+        path: '/styling',
+        name: 'styling',
+        component: () => import('../views/15_Styling.vue')
+    },
+    {
         path: '/upload_edit_download',
         component: () => import('../views/upload_edit_download.vue')
     },

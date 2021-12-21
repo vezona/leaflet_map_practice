@@ -11,7 +11,7 @@ import '../assets/scss/_reset.scss'
 import { ref, onMounted } from 'vue';
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import 'leaflet-ajax/dist/leaflet.ajax'
+import 'leaflet-ajax/dist/leaflet.ajax';
 
 export default {
   setup() {

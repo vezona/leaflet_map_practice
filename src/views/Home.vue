@@ -15,6 +15,10 @@
     <router-link to="grouplayer">group layer</router-link>
     <router-link to="leaflet_draw">plugin draw</router-link>
     <router-link to="geojson">geojson</router-link>
+    <router-link to="styling">styling</router-link>
+    
+    <br>
+    <div>其他練習</div>
     <router-link to="upload_edit_download">upload edit download</router-link>
     <router-link to="taiwan">Taiwan</router-link>
   </div>
