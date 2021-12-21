@@ -37,19 +37,19 @@ export default {
     	  }
       })
 
+      // layer control
+      const lyrControl = L.control.layers().addTo(map)    
+      lyrControl.addOverlay(features, '全部')  
 
       function onEachFeature(attributes, layer){
-        // 測試臺北市layer
-        if(layer.feature.properties.COUNTYNAME === '臺北市'){
-          initialLayerControl('臺北市', layer)
-        }
-
-
         // console.log(layer)
         layer.bindTooltip((layer) => {
           return layer.feature.properties.COUNTYNAME
         })
         .addTo(features)
+
+        // 把 layer 一一加到 layer control 上面
+        lyrControl.addOverlay(layer, layer.feature.properties.COUNTYNAME)
 
         // hover 時改變區域顏色
         layer.on('mouseover', () => {
@@ -66,23 +66,14 @@ export default {
         return { fillOpacity: 0 }
       }
 
-
-      // layer control
-      const initialLayerControl = (layerName, layer) => {
-        const basemap = {
-          'base':lyrOSM
-        };
-
-        const overlayers = {};
-
-        overlayers[layerName] = layer
-
-        const lyrControl = L.control.layers(basemap, overlayers).addTo(map)
-      }
-
-      initialLayerControl('全部', features)
-
-
+      // map 監聽 overlayer 被加入時
+      map.on('overlayadd', (eventLayer) => {
+        //  console.log(eventLayer);
+        // if(eventLayer.name === '全部'){
+        //   features.clearLayers() 
+        // }
+        
+      })
 
     }
 
