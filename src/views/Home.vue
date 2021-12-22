@@ -21,6 +21,7 @@
     <div>其他練習</div>
     <router-link to="upload_edit_download">upload edit download</router-link>
     <router-link to="taiwan">Taiwan</router-link>
+    <router-link to="tdxBikeStation">TDX Bike-Stations</router-link>
   </div>
 </template>
 

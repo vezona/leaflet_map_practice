@@ -90,6 +90,10 @@ const routes = [
         path: '/taiwan',
         component: () => import('../views/Taiwan.vue')
     },
+    {
+        path: '/tdxBikeStation',
+        component: () => import('../views/TDX_BikeStation.vue')
+    },
 ]
 
 const router = createRouter({
