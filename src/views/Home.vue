@@ -22,6 +22,7 @@
     <router-link to="upload_edit_download">upload edit download</router-link>
     <router-link to="taiwan">Taiwan</router-link>
     <router-link to="tdxBikeStation">TDX Bike-Stations</router-link>
+    <router-link to="lineBetweenMarkers">line Between Markers</router-link>
   </div>
 </template>
 

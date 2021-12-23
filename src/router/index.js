@@ -94,6 +94,10 @@ const routes = [
         path: '/tdxBikeStation',
         component: () => import('../views/TDX_BikeStation.vue')
     },
+    {
+        path: '/lineBetweenMarkers',
+        component: () => import('../views/LineBetweenMarkers.vue')
+    },
 ]
 
 const router = createRouter({
