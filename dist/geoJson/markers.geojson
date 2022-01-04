@@ -1,0 +1,52 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "圓環"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [121.54874324798583, 25.037938228222416]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "安東街"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [121.54234886169434, 25.04307060990016]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "大安"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [121.54342174530028, 25.033661079435696]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "松啤酒店"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [121.53264999389648, 25.038482581915197]
+        }
+    }]
+}
