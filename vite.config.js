@@ -23,5 +23,6 @@ export default defineConfig({
         assetFileNames: `assets/[name].[ext]`
       }
     }
-  }
+  },
+  base: process.env.NODE_ENV === 'production' ? '/leaflet_map_practice/' : './',
 })
