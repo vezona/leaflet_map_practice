@@ -66,9 +66,9 @@ export default {
         // Create a GeoJson layer without adding it to the map
         const layers = L.geoJSON(result, 
             { onEachFeature: onEachFeature, // onEachFeature 會遍歷每一個新建的 layer
-            pointToLayer: returnMarker // 設定 point 的方法
-            }) 
-        console.log('layers', layers);
+              pointToLayer: returnMarker // 設定 point 的方法
+            })
+        map.fitBounds( layers.getBounds() )
       };
     }
 

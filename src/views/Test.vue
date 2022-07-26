@@ -1,40 +1,79 @@
 <template>
   <div class="wrap">
-    <div id="map"></div>
+    <div ref="smallMap" id="smallMap"></div>
+    <div ref="map" id="map"></div>
     <div class="info">
+      <p><button @click="cancelEditedCoords">取消</button></p>
+      <br>
+      <p><button @click="save">儲存</button></p>
+      <br>
+      <p><button @click="changeConditions = !changeConditions">changeConditions</button></p>
+      <!-- <p v-if="changeConditions === true">{{a}}{{c}}</p> -->
+      {{conditions}}
+      <br>
+      {{a||null}}
+      {{b||null}}
+      {{c||null}}
     </div>
   </div>
 </template>
 
 <script>
 import '../assets/scss/_reset.scss'
-import { ref, onMounted } from 'vue';
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import 'leaflet-ajax/dist/leaflet.ajax';
+import { ref, reactive, onMounted, watch, watchEffect, toRefs } from 'vue';
+import { mapInit, cancelEditedCoords, saveEditedCoords } from '../js/useMap';
 
 export default {
   setup() {
-    // 地圖
-    let map, lyrOSM;
+    // map
+    let modalMapObj, smallMapObj;
+    const map = ref(null);
+    const smallMap = ref(null);
 
-    const mapInit = () => {
-      const center = [25.0263064, 121.5262934];
-      map = L.map("map", { zoomControl : false, attributionControl: false})
-              .setView(center, 10);
-
-      lyrOSM =  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
-
-      map.addLayer(lyrOSM);
-
+    const save = ()=>{
+      saveEditedCoords(modalMapObj);
     }
-    
-    // 綁定DOM
-    onMounted(() => {
-      mapInit()
+
+    let dataset;
+    const a = {a:1}, b = {b:2}, c = {c:3};
+    // const dataset = {...a, ...b, ...c};
+    const changeConditions = ref(false);
+    watchEffect(()=>{
+      dataset = changeConditions.value
+        ?  {...a, ...b}
+        :  {...a, ...c}
     })
 
+    const conditions = reactive(dataset);
+    watchEffect(()=>{
+      if (changeConditions.value){
+        Object.keys(c).forEach(key => delete conditions[key]);
+        Object.assign(conditions, dataset)
+      } else {
+        Object.keys(b).forEach(key => delete conditions[key]);
+        Object.assign(conditions, dataset)
+      }
+      
+      console.log('conditions', conditions);
+    })
+
+
+    // const conditions = reactive(dataset);
+    
+
+    onMounted(async () => {
+      modalMapObj = await mapInit(map.value, true);
+      smallMapObj = await mapInit(smallMap.value, false)
+    });
+
     return {
+      conditions,
+      ...toRefs(conditions),
+      map,
+      smallMap,
+      cancelEditedCoords,
+      save,
+      changeConditions
     }
   }
 }
@@ -46,10 +85,14 @@ export default {
 .wrap {
   display:flex;
 }
+#smallMap{
+  width: 30vw;
+  height: 50vh;
+}
 
 #map{
-  width: 80vw;
-  height: 90vh;
+  width: 40vw;
+  height: 50vh;
 }
 
 .info{

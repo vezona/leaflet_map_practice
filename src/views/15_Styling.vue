@@ -22,7 +22,7 @@ export default {
     const mapInit = () => {
       const center = [25.0263064, 121.5262934];
       map = L.map("map", { zoomControl : false, attributionControl: false})
-              .setView(center, 10);
+             .setView(center, 10);
 
       lyrOSM =  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
 
@@ -42,6 +42,13 @@ export default {
 
       const iconDiv = L.divIcon({className: 'my-div-icon'});
       L.marker([25.05807060990016, 121.34234886169434], {icon: iconDiv}).addTo(map);
+
+
+      // 距離中心點 X meter, 畫出四方型
+      const bounds = L.latLng(25.04307060990016, 121.54234886169434).toBounds(500)
+      const rectCoor = [[bounds._northEast.lat, bounds._northEast.lng], [bounds._southWest.lat, bounds._southWest.lng]]
+      L.rectangle(rectCoor).addTo(map);
+      // map.fitBounds(bounds);
 
     // styling poly - style
     //  const lyrPolygon = L.geoJson.ajax('geoJson/polygon.json', {style:{color:'pink'}})

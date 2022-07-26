@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
     // 首頁
@@ -98,10 +98,14 @@ const routes = [
         path: '/leaflet_map_practice/lineBetweenMarkers',
         component: () => import('../views/LineBetweenMarkers.vue')
     },
+    {
+        path: '/leaflet_map_practice/test',
+        component: () => import('../views/Test.vue')
+    },
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 })
 
